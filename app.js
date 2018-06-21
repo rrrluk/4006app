@@ -1,6 +1,7 @@
  express = require("express");
  var app = express();
  var bodyParser = require("body-parser")
+ var hash = require('object-hash');
 
  app.use(bodyParser.urlencoded({
      extended: true
@@ -35,6 +36,7 @@
          };
      });
 
+     macDataHash = hash.sha1(macData);
      //  console.log(macData);
 
      //  Object.keys(req.body).forEach(function (k) {
@@ -46,6 +48,7 @@
      res.render("received", {
          dataIn: dataIn,
          macData: macData,
+         macDataHash: macDataHash,
      });
      //  res.send("incoming!");
 
