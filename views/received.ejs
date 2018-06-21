@@ -10,22 +10,8 @@
 
 <div style="height:20px"></div>
 
-  <% var macData = ""; %>
+<code><%= macData %></code>
 
-  <%  Object.keys(dataIn).forEach(function (k) { %>
-    <% if (k != "VK_MAC") { %>
-    <% var el = dataIn[k]; %>
-    <% if (el.length < 10) { %>
-        <% macData += ("00" + el.length + el); %>
-    <% } else if (el.length <100) { %>
-        <% macData += ("0" + el.length + el); %>
-    <% } else { %>
-        <% macData += el %>
-      <%    }; %>
-      <%    }; %>
-  <%}); %>
-  
-  <code><%= macData %></code>
 
 
 
