@@ -8,7 +8,7 @@
 
  app.set("view engine", "ejs");
  // ei saa DO reverse proxyt tööle muidu, läheb / kataloogist otsima neid views-i
-  app.set('views', '4006app/views');
+ //   app.set('views', '4006app/views');
 
  app.get("/4006app", function (req, res) {
      res.render("home");
@@ -30,7 +30,7 @@
              } else if (item.length < 100) {
                  macData += "0" + item.length + item;
              } else {
-                 macData += item;
+                 macData += item.length + item;
              }
          };
      });
