@@ -2,6 +2,7 @@
  var app = express();
  var bodyParser = require("body-parser")
  var hash = require('object-hash');
+ const crypto = require('crypto');
 
  app.use(bodyParser.urlencoded({
      extended: true
@@ -36,7 +37,11 @@
          };
      });
 
-     macDataHash = hash.sha1(macData);
+     var macDataHash = crypto.createHash('sha1').update(macData).digest("hex");
+
+
+
+     console.log(macDataHash);
      //  console.log(macData);
 
      //  Object.keys(req.body).forEach(function (k) {
