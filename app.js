@@ -10,7 +10,7 @@
 
  app.set("view engine", "ejs");
  // ei saa DO reverse proxyt tööle muidu, läheb / kataloogist otsima neid views-i
- //   app.set('views', '4006app/views');
+ //  app.set('views', '4006app/views');
 
  app.get("/4006app", function (req, res) {
      res.render("home");
@@ -39,10 +39,14 @@
 
      var macDataHash = crypto.createHash('sha1').update(macData).digest("hex");
 
-
-
-     console.log(macDataHash);
      //  console.log(macData);
+     //  console.log(macDataHash);
+
+     // local path
+     var pubKey = fs.readFileSync("test-acs-BL_4006.pub", "utf8");
+     // reverse proxy path
+     //  var pubKey = fs.readFileSync("4006app/test-acs-BL_4006.pub", "utf8");
+     //  console.log(pubKey);
 
      //  Object.keys(req.body).forEach(function (k) {
      //      if (k != "VK_MAC") {
@@ -54,6 +58,7 @@
          dataIn: dataIn,
          macData: macData,
          macDataHash: macDataHash,
+         pubKey: pubKey,
      });
      //  res.send("incoming!");
 

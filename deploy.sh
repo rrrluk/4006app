@@ -2,7 +2,7 @@
 
 appName=4006app
 
-tar czf $appName.tar.gz *.js *.json views
+tar czf $appName.tar.gz *.js *.json views *.pub *.key
 tsocks scp $appName.tar.gz pertti@188.166.168.161:/home/pertti/
 rm $appName.tar.gz
 # remote
