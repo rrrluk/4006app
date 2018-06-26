@@ -1,0 +1,120 @@
+<% include partials/header.ejs %>
+
+<div class="uk-margin"></div>
+<h3>Posting request</h3>
+<hr>
+
+<% /* %>
+  <%  Object.keys(dataIn).forEach(function (k) { %>
+      <code>
+        <%= k + " - " + dataIn[k] %>
+      </code><br>
+  <%}); %>
+
+<% */ %>
+
+<form method="POST" action="<%= returnUrl %>" class="uk-form-horizontal">
+
+    <div class="uk-form-row uk-margin-small">
+    <label class="uk-form-label" for="VK_SERVICE">VK_SERVICE: </label>
+        <input type="text" id="VK_SERVICE" name="VK_SERVICE" value="<%= vk_service %>" readonly class="uk-input uk-form-width-small uk-form-small">
+    </div>
+
+    <div class="uk-form-row uk-margin-small">
+    <label class="uk-form-label" for="VK_VERSION">VK_VERSION: </label>
+        <input type="text" id="VK_VERSION" name="VK_VERSION" value="<%= vk_version %>" readonly class="uk-input uk-form-width-small uk-form-small uk-form-small">
+    </div>
+
+    <div class="uk-form-row uk-margin-small">
+    <label class="uk-form-label" for="VK_SND_ID">VK_SND_ID: </label>
+        <input type="text" id="VK_SND_ID" name="VK_SND_ID" value="<%= vk_snd_id_out %>" readonly class="uk-input uk-form-width-small uk-form-small">
+    </div> 
+    <div class="uk-form-row uk-margin-small">
+    <label class="uk-form-label" for="VK_REC_ID">VK_REC_ID: </label>
+        <input type="text" id="VK_REC_ID" name="VK_REC_ID" value="<%= vk_rec_id_out %>" readonly class="uk-input uk-form-width-small uk-form-small">
+    </div>
+
+    <div class="uk-form-row uk-margin-small">
+    <label class="uk-form-label" for="VK_NONCE">VK_NONCE: </label>
+        <input type="text" id="VK_NONCE" name="VK_NONCE" value="<%= vk_nonce %>" readonly class="uk-input uk-form-width-large uk-form-small">
+    </div>
+
+    <div class="uk-form-row uk-margin-small">
+    <label class="uk-form-label" for="VK_DATE">VK_DATE: </label>
+        <input type="text" id="VK_DATE" name="VK_DATE" value="<%= date %>" readonly class="uk-input uk-form-width-small uk-form-small">
+    </div>
+
+    <div class="uk-form-row uk-margin-small">
+    <label class="uk-form-label" for="VK_TIME">VK_TIME: </label>
+        <input type="text" id="VK_TIME" name="VK_TIME" value="<%= time %>" readonly class="uk-input uk-form-width-small uk-form-small">
+    </div>
+
+    <div class="uk-form-row uk-margin-small">
+    <label class="uk-form-label" for="VK_USER_ID">VK_USER_ID: </label>
+        <input type="text" id="VK_USER_ID" name="VK_USER_ID" value="<%= vk_userId %>" readonly class="uk-input uk-form-width-small uk-form-small">
+    </div>
+
+    <div class="uk-form-row uk-margin-small">
+    <label class="uk-form-label" for="3D_ENROLL">3D_ENROLL: </label>
+        <input type="text" id="3D_ENROLL" name="3D_ENROLL" value="<%= threeD_enroll %>" readonly class="uk-input uk-form-width-small uk-form-small">
+    </div>
+
+    <div class="uk-form-row uk-margin-small">
+    <label class="uk-form-label" for="3D_CAVV">3D_CAVV: </label>
+        <input type="text" id="3D_CAVV" name="3D_CAVV" value="<%= threeD_cavv %>" readonly class="uk-input uk-form-width-small uk-form-small">
+    </div>
+
+    <div class="uk-form-row uk-margin-small">
+    <label class="uk-form-label" for="3D_TXSTATUS">3D_TXSTATUS: </label>
+        <input type="text" id="3D_TXSTATUS" name="3D_TXSTATUS" value="<%= threeD_txstatus %>" readonly class="uk-input uk-form-width-small uk-form-small">
+    </div>
+
+    <div class="uk-form-row uk-margin-small">
+    <label class="uk-form-label" for="VK_RESP">VK_RESP: </label>
+        <input type="text" id="VK_RESP" name="VK_RESP" value="<%= vk_resp %>" readonly class="uk-input uk-form-width-small uk-form-small">
+    </div>
+
+
+
+    <div class="uk-form-row uk-margin-small">
+    <label class="uk-form-label" for="3D_ECI">3D_ECI: </label>
+        <input type="text" id="3D_ECI" name="3D_ECI" value="<%= threeD_eci %>" readonly class="uk-input uk-form-width-small uk-form-small">
+    </div>
+
+    <div class="uk-form-row uk-margin-small">
+    <label class="uk-form-label" for="3D_CAVV_ALG">3D_CAVV_ALG: </label>
+        <input type="text" id="3D_CAVV_ALG" name="3D_CAVV_ALG" value="<%= threeD_cavv_alg %>" readonly class="uk-input uk-form-width-small uk-form-small">
+    </div>
+
+    <div class="uk-form-row uk-margin-small">
+    <label class="uk-form-label" for="3D_ERROR_CODE">3D_ERROR_CODE: </label>
+        <input type="text" id="3D_ERROR_CODE" name="3D_ERROR_CODE" value="<%= threeD_error_code %>"  class="uk-input uk-form-width-small uk-form-small">
+    </div>
+
+    <div class="uk-form-row uk-margin-small">
+    <label class="uk-form-label" for="VK_CHARSET">VK_CHARSET: </label>
+        <input type="text" id="VK_CHARSET" name="VK_CHARSET" value="<%= vk_charset %>" readonly class="uk-input uk-form-width-small uk-form-small">
+    </div>
+
+    <div class="uk-form-row uk-margin-small">
+    <label class="uk-form-label" for="VK_MAC">VK_MAC: </label>
+        <input type="text" id="VK_MAC" name="VK_MAC" value="<%= vk_mac %>" readonly class="uk-input  uk-form-small uk-margin-small">
+    </div>
+
+
+
+
+<hr>
+
+    <div class"uk-form-row uk-margin-small">
+        <button class="uk-button uk-button-primary">Send 3006</button>
+    </div>
+</form>
+
+
+<p>macDataOutString</p>
+<pre><%= macDataOutString %></pre>
+
+
+
+<% include partials/footer.ejs %>
