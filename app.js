@@ -85,9 +85,9 @@ app.post("/4006app/incoming", function (req, res) {
     // console.log(verify.verify(pubKey, sigDecoded));
     var vResult = verify.verify(pubKey, sigDecoded);
 
-    Object.keys(dataIn).forEach(function (k) {
-        console.log(k + " - " + dataIn[k]);
-    });
+    // Object.keys(dataIn).forEach(function (k) {
+    //     console.log(k + " - " + dataIn[k]);
+    // });
 
     date = moment().format("YYYYMMDD");
     time = moment().format("HH:mm:ss");
@@ -106,6 +106,7 @@ app.post("/4006app/incoming", function (req, res) {
     });
 });
 
+// route to post stuff back
 app.get("/4006app/outgoing", function (req, res) {
 
     vk_service = "3006";
