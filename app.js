@@ -71,7 +71,7 @@ app.post("/4006app/incoming", function (req, res) {
     // local path
     // var pubKey = fs.readFileSync("test-acs-BL_4006.pub");
     // DO reverse proxy path
-    var pubKey = fs.readFileSync("4006app/test-acs-BL_4006.pub");
+    var pubKey = fs.readFileSync("4006app/rluk_bl_4006.pub");
 
     // INIT verfiy
     const verify = crypto.createVerify('RSA-SHA1');
@@ -140,7 +140,7 @@ app.get("/4006app/outgoing", function (req, res) {
     const sign = crypto.createSign('RSA-SHA1');
     sign.update(macDataOutString);
 
-    var priKey = fs.readFileSync("4006app/test-acs-BL_4006.key");
+    var priKey = fs.readFileSync("4006app/rluk_bl_4006.key");
 
     vk_mac = sign.sign(priKey, "base64");
 
