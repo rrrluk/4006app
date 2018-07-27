@@ -12,7 +12,6 @@
 <p>local concatenate macData string</p>
 <pre><%= macData %></pre>
 
-<p>pubKey</p>
 <pre><%= pubKey %></pre>
 
 <% if (vResult == true) { %>
@@ -21,7 +20,7 @@
     <div class="uk-alert uk-alert-danger my-shadow1"><p>Verify result: <%= vResult %></p></div>
 <% } %>
 
-<a href="/4006app/outgoing" class="uk-button uk-button-primary my-shadow1">Out page</a>
+<a href="/<%= appName %>/outgoing" class="uk-button uk-button-primary my-shadow1">Out page</a>
 
 
 

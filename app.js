@@ -6,6 +6,12 @@ const crypto = require("crypto");
 var moment = require('moment');
 
 // Minu variabled
+
+// conf
+var port = "8004";
+var appName = "4006app";
+
+// message
 var vk_service = "";
 var vk_version = "";
 var vk_snd_id = "";
@@ -32,14 +38,14 @@ app.use(
 
 app.set("view engine", "ejs");
 // ei saa DO reverse proxyt tööle muidu, läheb / kataloogist otsima neid views-i
-app.set('views', '4006app/views');
+app.set('views', appName+'/views');
 
-app.get("/4006app", function (req, res) {
+app.get("/"+appName, function (req, res) {
     res.render("home");
     //  res.send("Works");
 });
 
-app.post("/4006app/incoming", function (req, res) {
+app.post("/" + appName + "/incoming", function (req, res) {
     //  console.log(req.body);
     //   console.log(req.body);
     var dataIn = req.body;
@@ -71,7 +77,7 @@ app.post("/4006app/incoming", function (req, res) {
     // local path
     // var pubKey = fs.readFileSync("test-acs-BL_4006.pub");
     // DO reverse proxy path
-    var pubKey = fs.readFileSync("4006app/rluk_bl_4006.pub");
+    var pubKey = fs.readFileSync(appName + "/rluk_bl_4006.pub");
 
     // INIT verfiy
     const verify = crypto.createVerify('RSA-SHA1');
@@ -94,6 +100,7 @@ app.post("/4006app/incoming", function (req, res) {
 
 
     res.render("received", {
+	appName: appName,
         dataIn: dataIn,
         returnUrl: returnUrl,
         vk_nonce: vk_nonce,
@@ -107,7 +114,7 @@ app.post("/4006app/incoming", function (req, res) {
 });
 
 // route to post stuff back
-app.get("/4006app/outgoing", function (req, res) {
+app.get("/" + appName + "/outgoing", function (req, res) {
 
     vk_service = "3006";
     vk_snd_id_out = vk_rec_id;
@@ -140,7 +147,7 @@ app.get("/4006app/outgoing", function (req, res) {
     const sign = crypto.createSign('RSA-SHA1');
     sign.update(macDataOutString);
 
-    var priKey = fs.readFileSync("4006app/rluk_bl_4006.key");
+    var priKey = fs.readFileSync(appName + "/rluk_bl_4006.key");
 
     vk_mac = sign.sign(priKey, "base64");
 
@@ -171,6 +178,6 @@ app.get("/4006app/outgoing", function (req, res) {
 
 
 // SERVER START
-app.listen(8004, "localhost", function () {
-    console.log("4006app started on port 8004!");
+app.listen(port, "localhost", function () {
+    console.log( appName + " started on port " + port + "!");
 });
