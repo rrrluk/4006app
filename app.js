@@ -38,7 +38,7 @@ app.use(
 
 app.set("view engine", "ejs");
 // ei saa DO reverse proxyt tööle muidu, läheb / kataloogist otsima neid views-i
-app.set('views', appName+'/views');
+// app.set('views', appName+'/views');
 
 app.get("/"+appName, function (req, res) {
     res.render("home");
@@ -77,7 +77,7 @@ app.post("/" + appName + "/incoming", function (req, res) {
     // local path
     // var pubKey = fs.readFileSync("test-acs-BL_4006.pub");
     // DO reverse proxy path
-    var pubKey = fs.readFileSync(appName + "/rluk_bl_4006.pub");
+    var pubKey = fs.readFileSync("rluk_bl_4006.pub");
 
     // INIT verfiy
     const verify = crypto.createVerify('RSA-SHA1');
@@ -147,7 +147,7 @@ app.get("/" + appName + "/outgoing", function (req, res) {
     const sign = crypto.createSign('RSA-SHA1');
     sign.update(macDataOutString);
 
-    var priKey = fs.readFileSync(appName + "/rluk_bl_4006.key");
+    var priKey = fs.readFileSync("rluk_bl_4006.key");
 
     vk_mac = sign.sign(priKey, "base64");
 
