@@ -38,7 +38,7 @@ app.use(
 
 app.set("view engine", "ejs");
 // ei saa DO reverse proxyt tööle muidu, läheb / kataloogist otsima neid views-i
-// app.set('views', appName+'/views');
+app.set('views', appName+'/views');
 
 app.get("/"+appName, function (req, res) {
     res.render("home");
